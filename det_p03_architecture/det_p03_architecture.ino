@@ -87,12 +87,6 @@ void neopixelSetup() {
   Serial.println("SUCCESS: Neopixel Setup.");
 }
 
-////////////////////////////PUMPS///////////////////////////////
-#include <WiFi.h>
-#include <WiFiClient.h>
-#include <WiFiAP.h>
-
-
 
 void setup() {
   Serial.begin(115200);
@@ -144,8 +138,10 @@ void loop() {
         } else if (c != '\r') {  // if you got anything else but a carriage return character,
           currentLine += c;      // add it to the end of the currentLine
         }
+
         
         // MAIN LOGIC FOR DECIDING THE SCENARIO
+        
         if (currentLine.endsWith("GET /DREAM1")) {
           // manualOverride = true;
           for (int i = 0; i<sizeof(DREAM1_KEYFRAMES); i++) {
