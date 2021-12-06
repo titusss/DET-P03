@@ -15,28 +15,28 @@ const int LED_TIMINGS[4] = {500, 25, 500, 0};
 const int LED_RGB[4][3] = {{50, 30, 0}, {50, 50, 50}, {20, 10, 50}, {0, 0, 0}};
 
 // DREAM 1
-const int DREAM1_KEYFRAMES[5] = {0, 20, 30, 40, 60};
-const int DREAM1_HEARTRATES[5] = {90, 70, 90, 90, 50};
-const int DREAM1_RESPRATES[5] = {16, 10, 20, 10, 8};
-const int DREAM1_LEDMODES[5] = {0, 3, 1, 3, 2};
+const int DREAM1_KEYFRAMES[6] = {0, 20, 30, 40, 60, 70};
+const int DREAM1_HEARTRATES[6] = {90, 70, 90, 90, 50, 70};
+const int DREAM1_RESPRATES[6] = {16, 10, 20, 5, 8, 15};
+const int DREAM1_LEDMODES[6] = {0, 3, 1, 3, 2, 3};
 const char *DREAM1_AMBIENTSOUND = "dream01.wav";
-const char *DREAM1_PELTIERMODES[5] = {"cold", "cold", "warm", "warm", "warm"};
+const char *DREAM1_PELTIERMODES[6] = {"cold", "cold", "warm", "warm", "warm", "cold"};
 
 // DREAM 2
-const int DREAM2_KEYFRAMES[5] = {0, 20, 30, 40, 60};
-const int DREAM2_HEARTRATES[5] = {90, 70, 90, 90, 50};
-const int DREAM2_RESPRATES[5] = {16, 10, 20, 10, 8};
-const int DREAM2_LEDMODES[5] = {0, 3, 1, 3, 2};
+const int DREAM2_KEYFRAMES[6] = {0, 20, 30, 40, 60, 70};
+const int DREAM2_HEARTRATES[6] = {90, 70, 90, 90, 50, 70};
+const int DREAM2_RESPRATES[6] = {16, 10, 20, 5, 8, 15};
+const int DREAM2_LEDMODES[6] = {0, 3, 1, 3, 2, 3};
 const char *DREAM2_AMBIENTSOUND = "dream01.wav";
-const char *DREAM2_PELTIERMODES[5] = {"cold", "cold", "warm", "warm", "warm"};
+const char *DREAM2_PELTIERMODES[6] = {"cold", "cold", "warm", "warm", "warm", "cold"};
 
 // DREAM 3
-const int DREAM3_KEYFRAMES[5] = {0, 20, 30, 40, 60};
-const int DREAM3_HEARTRATES[5] = {90, 70, 90, 90, 50};
-const int DREAM3_RESPRATES[5] = {16, 10, 20, 10, 8};
-const int DREAM3_LEDMODES[5] = {0, 3, 1, 3, 2};
+const int DREAM3_KEYFRAMES[6] = {0, 20, 30, 40, 60, 70};
+const int DREAM3_HEARTRATES[6] = {90, 70, 90, 90, 50, 70};
+const int DREAM3_RESPRATES[6] = {16, 10, 20, 5, 8, 15};
+const int DREAM3_LEDMODES[6] = {0, 3, 1, 3, 2, 3};
 const char *DREAM3_AMBIENTSOUND = "dream01.wav";
-const char *DREAM3_PELTIERMODES[5] = {"cold", "cold", "warm", "warm", "warm"};
+const char *DREAM3_PELTIERMODES[6] = {"cold", "cold", "warm", "warm", "warm", "cold"};
 
 ////////////////////////////WIFI///////////////////////////////
 #include <WiFi.h>
@@ -145,30 +145,30 @@ void loop() {
         if (currentLine.endsWith("GET /DREAM1")) {
           // manualOverride = true;
           for (int i = 0; i<sizeof(DREAM1_KEYFRAMES); i++) {
-            int last_keyframe_time = DREAM1_KEYFRAMES[i - 1];
-            if (i==0) {
-              last_keyframe_time = 0;
+            int next_keyframe_time = sizeof(DREAM1_KEYFRAMES);
+            if (i==sizeof(DREAM1_KEYFRAMES)-1) {
+              next_keyframe_time = DREAM1_KEYFRAMES[i + 1];
             }
-            setDream(*DREAM1_PELTIERMODES[i], DREAM1_RESPRATES[i], DREAM1_LEDMODES[i], DREAM1_KEYFRAMES[i], last_keyframe_time); 
+            setDream(*DREAM1_PELTIERMODES[i], DREAM1_RESPRATES[i], DREAM1_LEDMODES[i], DREAM1_KEYFRAMES[i], next_keyframe_time); 
           }
         }
         else if (currentLine.endsWith("GET /DREAM2")) {
           // manualOverride = true;
           for (int i = 0; i<sizeof(DREAM2_KEYFRAMES); i++) {
-            int last_keyframe_time = DREAM2_KEYFRAMES[i - 1];
-            if (i==0) {
-              last_keyframe_time = 0;
+            int next_keyframe_time = sizeof(DREAM2_KEYFRAMES);
+            if (i==sizeof(DREAM2_KEYFRAMES)-1) {
+              next_keyframe_time = DREAM1_KEYFRAMES[i + 1];
             }
-            setDream(*DREAM2_PELTIERMODES[i], DREAM2_RESPRATES[i], DREAM2_LEDMODES[i], DREAM2_KEYFRAMES[i], last_keyframe_time); 
+            setDream(*DREAM2_PELTIERMODES[i], DREAM2_RESPRATES[i], DREAM2_LEDMODES[i], DREAM2_KEYFRAMES[i], next_keyframe_time); 
           }
         } else if(currentLine.endsWith("GET /DREAM3")) {
           // manualOverride = true;
           for (int i = 0; i<sizeof(DREAM3_KEYFRAMES); i++) {
-            int last_keyframe_time = DREAM3_KEYFRAMES[i - 1];
-            if (i==0) {
-              last_keyframe_time = 0;
+            int next_keyframe_time = sizeof(DREAM3_KEYFRAMES);
+            if (i==sizeof(DREAM3_KEYFRAMES)-1) {
+              next_keyframe_time = DREAM3_KEYFRAMES[i + 1];
             }
-            setDream(*DREAM3_PELTIERMODES[i], DREAM3_RESPRATES[i], DREAM3_LEDMODES[i], DREAM3_KEYFRAMES[i], last_keyframe_time);   
+            setDream(*DREAM3_PELTIERMODES[i], DREAM3_RESPRATES[i], DREAM3_LEDMODES[i], DREAM3_KEYFRAMES[i], next_keyframe_time);   
           }
         } else if (currentLine.endsWith("GET /STOP")) {
           // manualOverride = false;
@@ -190,7 +190,7 @@ void loop() {
   }
 }
 
-void setDream(char peltierMode, int respRate, int ledMode, int current_keyframe_time, int last_keyframe_time) {
+void setDream(char peltierMode, int respRate, int ledMode, int current_keyframe_time, int next_keyframe_time) {
   // Heartrate
   // Play PCR Future Work
   
@@ -217,7 +217,7 @@ void setDream(char peltierMode, int respRate, int ledMode, int current_keyframe_
   int respInhaling = true;
   
   // PSEUDO CODE TO-DO IMPLEMENT TIMER CHECK HERE
-  while (time.now <= current_keyframe_time - last_keyframe_time * 1000) {
+  while (time.now <= next_keyframe_time - current_keyframe_time * 1000) {
   // END OF PSEUDO CODE
     
     if (int(time.now / 10) % ledDelay == 0) {
