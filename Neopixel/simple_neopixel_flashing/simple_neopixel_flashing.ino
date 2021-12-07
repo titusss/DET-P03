@@ -13,7 +13,7 @@
 #define PIN2        16
 
 // How many NeoPixels are attached to the Arduino?
-#define NUMPIXELS 29 // Popular NeoPixel ring size
+#define NUMPIXELS 10 // Popular NeoPixel ring size
 
 // When setting up the NeoPixel library, we tell it how many pixels,
 // and which pin to use to send signals. Note that for older NeoPixel

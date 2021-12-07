@@ -6,7 +6,7 @@
 #define PELTIER_PIN_COOLING   23
 
 #define PUMP_OUT_PIN          -1
-#define PUMP_IN_PIN            -1
+#define PUMP_IN_PIN           -1
 
 ////////////////////////////DREAMS///////////////////////////////
 // LED delays

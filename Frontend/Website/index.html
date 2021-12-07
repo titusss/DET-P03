@@ -1,0 +1,642 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: #000;
+            font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            margin: 0;
+        }
+
+        a {
+            color: inherit !important;
+            text-decoration: none;
+        }
+
+        h2 {
+            font-size: 7vw;
+            line-height: 6vw;
+            margin: 0;
+        }
+
+        h4 {
+            font-weight: 200;
+            margin: 1vw 0vw;
+            font-size: 2.2vw;
+        }
+
+        h5 {
+            font-size: 1.5vw;
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .wrapper {
+            padding: 5vw;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-column-gap: 4vw;
+            grid-row-gap: 4vw;
+        }
+
+        .card {
+            color: #fff;
+            background-size: cover;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        #card-01 {
+            background-image: url(images/card-01-bg.jpg);
+        }
+
+        #card-02 {
+            background-image: url(images/card-02-bg.jpg);
+        }
+
+        #card-03 {
+            background-image: url(images/card-03-bg.jpg);
+        }
+
+        #card-04 {
+            background-image: url(images/card-04-bg.jpg);
+        }
+
+        #card-05 {
+            background-image: url(images/card-05-bg.jpg);
+        }
+
+        #card-06 {
+            background-image: url(images/card-06-bg.jpg);
+        }
+
+        .card-inner {
+            padding: 3vw;
+        }
+
+        .dream-data {
+            display: grid;
+            grid-template-columns: repeat(2, max-content);
+            grid-column-gap: 3vw;
+            font-size: 1.1vw;
+        }
+
+        .dream-data-value {
+            font-weight: 600;
+        }
+
+        .social-icon {
+            width: 2.5vw;
+            margin-bottom: 1vw;
+        }
+
+        .citizen-id {
+            display: flex;
+        }
+
+        .citizen-id>h4 {
+            margin-right: 3vw;
+        }
+
+        .dream-keywords {
+            margin: 2vw 0 8vw;
+        }
+
+        .progress {
+            width: 100%;
+            height: 6px;
+            background: #0000005e;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, #9f120c, #ef3700 17%, #ffc319 34%, #ff1313 51%, #9f120c 68%, #ef3700 85%, #ffc319);
+            background-size: 300% 100%;
+            animation: progress-animation 2s linear infinite;
+        }
+
+        @keyframes progress-animation {
+            0% {
+                background-position: 100%;
+            }
+
+            100% {
+                background-position: 0;
+            }
+        }
+
+        .sync-data {
+            display: flex;
+            margin: 3vw -1.2vw 0vw -1.2vw;
+        }
+
+        .check-sum-numbers {
+            margin-right: 0.5vw;
+        }
+
+        .check-sum-tag {
+            background-color: #9f120c;
+            border-radius: 3px;
+            color: #000;
+            display: flex;
+            padding: 0.6vw 0.4vw 0.4vw 1.2vw;
+        }
+
+        .check-sum-sub {
+            font-size: .6vw;
+        }
+
+        .check-sum-title {
+            line-height: .9vw;
+            font-weight: 100;
+            font-size: 1vw;
+            text-transform: uppercase;
+        }
+
+        .check-sum-bars-wrapper {
+            overflow: hidden;
+            position: relative;
+            width: 80px;
+        }
+
+        .check-sum-bars {
+            position: absolute;
+        }
+
+        .check-sum-bars>div {
+            display: inline-block;
+            background: #000;
+            bottom: 1px;
+            height: 3px;
+            width: 3px;
+            animation: sound 0ms -800ms linear infinite alternate;
+        }
+
+        @keyframes sound {
+            0% {
+                opacity: .35;
+                height: 3px;
+            }
+
+            100% {
+                opacity: 1;
+                height: 28px;
+            }
+        }
+
+        .bar:nth-child(1) {
+            left: 1px;
+            animation-duration: 474ms;
+            animation-delay: -10s;
+        }
+
+        .bar:nth-child(2) {
+            left: 0px;
+            animation-duration: 433ms;
+            animation-delay: -2s;
+        }
+
+        .bar:nth-child(3) {
+            left: 5px;
+            animation-duration: 407ms;
+            animation-delay: -17s;
+        }
+
+        .bar:nth-child(4) {
+            left: 13px;
+            animation-duration: 458ms;
+            animation-delay: -30s;
+        }
+
+        .bar:nth-child(5) {
+            left: 17px;
+            animation-duration: 400ms;
+            animation-delay: -21s;
+        }
+
+        .bar:nth-child(6) {
+            left: 21px;
+            animation-duration: 427ms;
+            animation-delay: -3s;
+        }
+
+        .bar:nth-child(7) {
+            left: 25px;
+            animation-duration: 441ms;
+            animation-delay: -3s;
+        }
+
+        .bar:nth-child(8) {
+            left: 29px;
+            animation-duration: 419ms;
+            animation-delay: -20s;
+        }
+
+        .bar:nth-child(9) {
+            left: 33px;
+            animation-duration: 487ms;
+            animation-delay: -19s;
+        }
+
+        .bar:nth-child(10) {
+            left: 37px;
+            animation-duration: 442ms;
+            animation-delay: -1s;
+        }
+    </style>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="card-grid">
+
+            <div class="card" id="card-01">
+                <a href="" class="dream-link">
+                    <div class="progress">
+                        <span class="progress-bar" style="width: 8%"></span>
+                    </div>
+                    <div class="card-inner">
+                        <div class="citizen-data">
+                            <img src="images/friends.svg" class="social-icon" alt="">
+                            <h2>Wendy Miller<light>+2</light>
+                            </h2>
+                            <div class="citizen-id">
+                                <h4>Citizen ID</h4>
+                                <h4><strong>F–B–6MOP–7</strong></h4>
+                            </div>
+                            <h5 class="dream-keywords">Peaceful, Intimate, Nature Exploration</h5>
+                        </div>
+                        <div class="dream-data">
+                            <p class="dream-data-key">Progression</p>
+                            <p class="dream-data-value">8%</p>
+                            <p class="dream-data-key">Rating</p>
+                            <p class="dream-data-value">4.7 (139)</p>
+                            <p class="dream-data-key">DIL-Safety</p>
+                            <p class="dream-data-value">A</p>
+                            <p class="dream-data-key">Conversation</p>
+                            <p class="dream-data-value">Enabled</p>
+                            <p class="dream-data-key">Success Rate</p>
+                            <p class="dream-data-value">78%</p>
+                        </div>
+                        <div class="sync-data">
+                            <div class="check-sum-tag">
+                                <div class="check-sum-numbers">
+                                    <p class="check-sum-sub">313424928729</p>
+                                    <p class="check-sum-title"><strong>IMN–F</strong> Check Sum</p>
+                                </div>
+                                <!-- <img src="images/check-sum-barcode.svg" class="check-sum-barcode" alt=""> -->
+                                <div class="check-sum-bars-wrapper">
+                                    <div class='check-sum-bars'>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-1'></div>
+                                        <div class='bar bar-5'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-6'></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <img src="images/sync-vis-1" alt="" class="sync-vis"> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card" id="card-02">
+                <a href="" class="dream-link">
+                    <div class="progress">
+                        <span class="progress-bar" style="width: 73%"></span>
+                    </div>
+                    <div class="card-inner">
+                        <div class="citizen-data">
+                            <img src="images/friends.svg" class="social-icon" alt="">
+                            <h2>Mustafa Ayad</h2>
+                            <div class="citizen-id">
+                                <h4>Citizen ID</h4>
+                                <h4><strong>M–F–91H19–1</strong></h4>
+                            </div>
+                            <h5 class="dream-keywords">Peaceful, Intimate, Nature Exploration</h5>
+                        </div>
+                        <div class="dream-data">
+                            <p class="dream-data-key">Progression</p>
+                            <p class="dream-data-value">73%</p>
+                            <p class="dream-data-key">Rating</p>
+                            <p class="dream-data-value">/ /</p>
+                            <p class="dream-data-key">DIL-Safety</p>
+                            <p class="dream-data-value">A</p>
+                            <p class="dream-data-key">Conversation</p>
+                            <p class="dream-data-value">Enabled</p>
+                            <p class="dream-data-key">Success Rate</p>
+                            <p class="dream-data-value">54%</p>
+                        </div>
+                        <div class="sync-data">
+                            <div class="check-sum-tag">
+                                <div class="check-sum-numbers">
+                                    <p class="check-sum-sub">313424928729</p>
+                                    <p class="check-sum-title"><strong>IMN–F</strong> Check Sum</p>
+                                </div>
+                                <!-- <img src="images/check-sum-barcode.svg" class="check-sum-barcode" alt=""> -->
+                                <div class="check-sum-bars-wrapper">
+                                    <div class='check-sum-bars'>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-1'></div>
+                                        <div class='bar bar-5'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-6'></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <img src="images/sync-vis-1" alt="" class="sync-vis"> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card" id="card-03">
+                <a href="" class="dream-link">
+                    <div class="progress">
+                        <span class="progress-bar" style="width: 29%"></span>
+                    </div>
+                    <div class="card-inner">
+                        <div class="citizen-data">
+                            <img src="images/friends.svg" class="social-icon" alt="">
+                            <h2>Mark Williams</h2>
+                            <div class="citizen-id">
+                                <h4>Citizen ID</h4>
+                                <h4><strong>M–E–31J12–4</strong></h4>
+                            </div>
+                            <h5 class="dream-keywords">Whimsical, Serenity, Urban, Exploration</h5>
+                        </div>
+                        <div class="dream-data">
+                            <p class="dream-data-key">Progression</p>
+                            <p class="dream-data-value">29%</p>
+                            <p class="dream-data-key">Rating</p>
+                            <p class="dream-data-value">4.9 (645)</p>
+                            <p class="dream-data-key">DIL-Safety</p>
+                            <p class="dream-data-value">A+</p>
+                            <p class="dream-data-key">Conversation</p>
+                            <p class="dream-data-value">Enabled</p>
+                            <p class="dream-data-key">Success Rate</p>
+                            <p class="dream-data-value">89%</p>
+                        </div>
+                        <div class="sync-data">
+                            <div class="check-sum-tag">
+                                <div class="check-sum-numbers">
+                                    <p class="check-sum-sub">313424928729</p>
+                                    <p class="check-sum-title"><strong>IMN–F</strong> Check Sum</p>
+                                </div>
+                                <!-- <img src="images/check-sum-barcode.svg" class="check-sum-barcode" alt=""> -->
+                                <div class="check-sum-bars-wrapper">
+                                    <div class='check-sum-bars'>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-1'></div>
+                                        <div class='bar bar-5'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-6'></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <img src="images/sync-vis-1" alt="" class="sync-vis"> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card" id="card-04">
+                <a href="" class="dream-link">
+                    <div class="progress">
+                        <span class="progress-bar" style="width: 91%"></span>
+                    </div>
+                    <div class="card-inner">
+                        <div class="citizen-data">
+                            <img src="images/friends.svg" class="social-icon" alt="">
+                            <h2>Milo Davison</h2>
+                            <div class="citizen-id">
+                                <h4>Citizen ID</h4>
+                                <h4><strong>M–B–8TOP–3</strong></h4>
+                            </div>
+                            <h5 class="dream-keywords">Meditation, Focus, Experience</h5>
+                        </div>
+                        <div class="dream-data">
+                            <p class="dream-data-key">Progression</p>
+                            <p class="dream-data-value">91%</p>
+                            <p class="dream-data-key">Rating</p>
+                            <p class="dream-data-value">/ /</p>
+                            <p class="dream-data-key">DIL-Safety</p>
+                            <p class="dream-data-value">A++</p>
+                            <p class="dream-data-key">Conversation</p>
+                            <p class="dream-data-value">Enabled</p>
+                            <p class="dream-data-key">Success Rate</p>
+                            <p class="dream-data-value">34%</p>
+                        </div>
+                        <div class="sync-data">
+                            <div class="check-sum-tag">
+                                <div class="check-sum-numbers">
+                                    <p class="check-sum-sub">313424928729</p>
+                                    <p class="check-sum-title"><strong>IMN–F</strong> Check Sum</p>
+                                </div>
+                                <!-- <img src="images/check-sum-barcode.svg" class="check-sum-barcode" alt=""> -->
+                                <div class="check-sum-bars-wrapper">
+                                    <div class='check-sum-bars'>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-1'></div>
+                                        <div class='bar bar-5'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-6'></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <img src="images/sync-vis-1" alt="" class="sync-vis"> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card" id="card-05">
+                <a href="" class="dream-link">
+                    <div class="progress">
+                        <span class="progress-bar" style="width: 0%"></span>
+                    </div>
+                    <div class="card-inner">
+                        <div class="citizen-data">
+                            <img src="images/closeby.svg" class="social-icon" alt="">
+                            <h2>Close: Dan26</h2>
+                            <div class="citizen-id">
+                                <h4>Citizen ID</h4>
+                                <h4><strong>M–A–61CH–6</strong></h4>
+                            </div>
+                            <h5 class="dream-keywords">Childhood, Whimsical, Serenity, Urban</h5>
+                        </div>
+                        <div class="dream-data">
+                            <p class="dream-data-key">Progression</p>
+                            <p class="dream-data-value">Planned for 12:48</p>
+                            <p class="dream-data-key">Rating</p>
+                            <p class="dream-data-value">/ /</p>
+                            <p class="dream-data-key">DIL-Safety</p>
+                            <p class="dream-data-value">B++ or higher</p>
+                            <p class="dream-data-key">Conversation</p>
+                            <p class="dream-data-value">/</p>
+                            <p class="dream-data-key">Success Rate</p>
+                            <p class="dream-data-value">/</p>
+                        </div>
+                        <div class="sync-data">
+                            <div class="check-sum-tag">
+                                <div class="check-sum-numbers">
+                                    <p class="check-sum-sub">313424928729</p>
+                                    <p class="check-sum-title"><strong>IMN–F</strong> Check Sum</p>
+                                </div>
+                                <!-- <img src="images/check-sum-barcode.svg" class="check-sum-barcode" alt=""> -->
+                                <div class="check-sum-bars-wrapper">
+                                    <div class='check-sum-bars'>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-1'></div>
+                                        <div class='bar bar-5'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-6'></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <img src="images/sync-vis-1" alt="" class="sync-vis"> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="card" id="card-06">
+                <a href="" class="dream-link">
+                    <div class="progress">
+                        <span class="progress-bar" style="width: 0%"></span>
+                    </div>
+                    <div class="card-inner">
+                        <div class="citizen-data">
+                            <img src="images/closeby.svg" class="social-icon" alt="">
+                            <h2>Random Dreamer</h2>
+                            <div class="citizen-id">
+                                <h4>Citizen ID</h4>
+                                <h4><strong>/</strong></h4>
+                            </div>
+                            <h5 class="dream-keywords">Favorites: Conversation, Therapy, Childhood</h5>
+                        </div>
+                        <div class="dream-data">
+                            <p class="dream-data-key">Progression</p>
+                            <p class="dream-data-value">Match starting in 00:34</p>
+                            <p class="dream-data-key">Rating</p>
+                            <p class="dream-data-value">/ /</p>
+                            <p class="dream-data-key">DIL-Safety</p>
+                            <p class="dream-data-value">B+ or higher</p>
+                            <p class="dream-data-key">Conversation</p>
+                            <p class="dream-data-value">Enabled</p>
+                            <p class="dream-data-key">Success Rate</p>
+                            <p class="dream-data-value">30% or higher</p>
+                        </div>
+                        <div class="sync-data">
+                            <div class="check-sum-tag">
+                                <div class="check-sum-numbers">
+                                    <p class="check-sum-sub">313424928729</p>
+                                    <p class="check-sum-title"><strong>IMN–F</strong> Check Sum</p>
+                                </div>
+                                <!-- <img src="images/check-sum-barcode.svg" class="check-sum-barcode" alt=""> -->
+                                <div class="check-sum-bars-wrapper">
+                                    <div class='check-sum-bars'>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-1'></div>
+                                        <div class='bar bar-5'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-3'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-2'></div>
+                                        <div class='bar bar-6'></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <img src="images/sync-vis-1" alt="" class="sync-vis"> -->
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    /* Get the documentElement (<html>) to display the page in fullscreen */
+    var elem = document.documentElement;
+    
+    /* View in fullscreen */
+    function openFullscreen() {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+      }
+    }
+    
+    /* Close fullscreen */
+    function closeFullscreen() {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+      }
+    }
+    </script>
+</html>
