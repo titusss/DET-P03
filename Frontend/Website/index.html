@@ -258,17 +258,82 @@
             animation-duration: 442ms;
             animation-delay: -1s;
         }
+        .overlay {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            color: #fff;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            background-color: #00000069;
+            width: 100vw;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 10vw;
+        }
+        .sync-data-overlay {
+            width: 200px;
+            margin: auto;
+        }
+        .join {
+            margin-top: 30vh;
+        }
+        .exit{
+            margin-top: 5vh;
+        }
+        .visible{
+            display: block !important;
+        }
     </style>
 
     <title>Document</title>
 </head>
 
 <body>
+    <div class="overlay visible" id="overlay">
+        <div>
+        <div class="progress">
+            <span class="progress-bar" style="width: 100%"></span>
+        </div>
+        <h1 class="join">
+            Joining Dream
+        </h1>
+        <div class="sync-data-overlay">
+            <div class="check-sum-tag">
+                <div class="check-sum-numbers">
+                    <p class="check-sum-sub">313424928729</p>
+                    <p class="check-sum-title"><strong>IMN–F</strong> Check Sum</p>
+                </div>
+                <!-- <img src="images/check-sum-barcode.svg" class="check-sum-barcode" alt=""> -->
+                <div class="check-sum-bars-wrapper">
+                    <div class='check-sum-bars'>
+                        <div class='bar bar-3'></div>
+                        <div class='bar bar-2'></div>
+                        <div class='bar bar-2'></div>
+                        <div class='bar bar-1'></div>
+                        <div class='bar bar-5'></div>
+                        <div class='bar bar-2'></div>
+                        <div class='bar bar-2'></div>
+                        <div class='bar bar-2'></div>
+                        <div class='bar bar-3'></div>
+                        <div class='bar bar-2'></div>
+                        <div class='bar bar-2'></div>
+                        <div class='bar bar-6'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h4 class="exit" id="exit">Exit Dream</h4>
+        </div>
+
+    </div>
     <div class="wrapper">
+        
         <div class="card-grid">
 
             <div class="card" id="card-01">
-                <a href="http://192.168.4.1/DREAM1" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');">
+                <a href="http://192.168.4.1/DREAM1" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');" id="l1">
                     <div class="progress">
                         <span class="progress-bar" style="width: 8%"></span>
                     </div>
@@ -326,7 +391,7 @@
             </div>
 
             <div class="card" id="card-02">
-                <a href="http://192.168.4.1/DREAM2" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');">
+                <a href="http://192.168.4.1/DREAM2" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');" id="l2">
                     <div class="progress">
                         <span class="progress-bar" style="width: 73%"></span>
                     </div>
@@ -383,7 +448,7 @@
             </div>
 
             <div class="card" id="card-03">
-                <a href="http://192.168.4.1/DREAM3" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');">
+                <a href="http://192.168.4.1/DREAM3" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');" id="l3">
                     <div class="progress">
                         <span class="progress-bar" style="width: 29%"></span>
                     </div>
@@ -440,7 +505,7 @@
             </div>
 
             <div class="card" id="card-04">
-                <a href="http://192.168.4.1/DREAM4" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');">
+                <a href="http://192.168.4.1/DREAM2" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');" id="l4">
                     <div class="progress">
                         <span class="progress-bar" style="width: 91%"></span>
                     </div>
@@ -497,7 +562,7 @@
             </div>
 
             <div class="card" id="card-05">
-                <a href="http://192.168.4.1/DREAM5" class="dream-link">
+                <a href="http://192.168.4.1/DREAM1" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');" id="l5">
                     <div class="progress">
                         <span class="progress-bar" style="width: 0%"></span>
                     </div>
@@ -554,7 +619,7 @@
             </div>
 
             <div class="card" id="card-06">
-                <a href="http://192.168.4.1/DREAM6" class="dream-link">
+                <a href="http://192.168.4.1/DREAM3" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');" id="l6">
                     <div class="progress">
                         <span class="progress-bar" style="width: 0%"></span>
                     </div>
@@ -612,39 +677,30 @@
 
         </div>
     </div>
-</body>
-<script>
-    /* Get the documentElement (<html>) to display the page in fullscreen */
-    var elem = document.documentElement;
-    
-    /* View in fullscreen */
-    function openFullscreen() {
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.webkitRequestFullscreen) { /* Safari */
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) { /* IE11 */
-        elem.msRequestFullscreen();
-      }
-    }
-    
-    /* Close fullscreen */
-    function closeFullscreen() {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) { /* Safari */
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) { /* IE11 */
-        document.msExitFullscreen();
-      }
-    }
-
-    function popUnder(node) {
-    var newWindow = window.open("about:blank", node.target, "width=500,height=500");
-    newWindow.blur();
-    window.focus();
-    newWindow.location.href = node.href;
-    return false;
-    }
+    <script> 
+        // document.getElementById("l1").addEventListener("click", function(){ 
+        //     document.getElementById("overlay").classList.add("visible");
+        // });
+        // document.getElementById("l2").addEventListener("click", function(){ 
+        //     document.getElementById("overlay").classList.add("visible");
+        // });
+        // document.getElementById("l3").addEventListener("click", function(){ 
+        //     document.getElementById("overlay").classList.add("visible");
+        // });
+        // document.getElementById("l4").addEventListener("click", function(){ 
+        //     document.getElementById("overlay").classList.add("visible");
+        // });
+        // document.getElementById("l5").addEventListener("click", function(){ 
+        //     document.getElementById("overlay").classList.add("visible");
+        // });
+        // document.getElementById("l6").addEventListener("click", function(){ 
+        //     document.getElementById("overlay").classList.add("visible");
+        // });
+        document.getElementById("exit").addEventListener("click", function(){ 
+            document.getElementById("overlay").classList.remove("visible");
+        });
+        
     </script>
+</body>
+
 </html>
