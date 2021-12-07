@@ -268,7 +268,7 @@
         <div class="card-grid">
 
             <div class="card" id="card-01">
-                <a href="http://192.168.4.1/DREAM1" class="dream-link">
+                <a href="http://192.168.4.1/DREAM1" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');">
                     <div class="progress">
                         <span class="progress-bar" style="width: 8%"></span>
                     </div>
@@ -326,7 +326,7 @@
             </div>
 
             <div class="card" id="card-02">
-                <a href="http://192.168.4.1/DREAM2" class="dream-link">
+                <a href="http://192.168.4.1/DREAM2" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');">
                     <div class="progress">
                         <span class="progress-bar" style="width: 73%"></span>
                     </div>
@@ -383,7 +383,7 @@
             </div>
 
             <div class="card" id="card-03">
-                <a href="http://192.168.4.1/DREAM3" class="dream-link">
+                <a href="http://192.168.4.1/DREAM3" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');">
                     <div class="progress">
                         <span class="progress-bar" style="width: 29%"></span>
                     </div>
@@ -440,7 +440,7 @@
             </div>
 
             <div class="card" id="card-04">
-                <a href="http://192.168.4.1/DREAM4" class="dream-link">
+                <a href="http://192.168.4.1/DREAM4" class="dream-link" onclick="window.open('#','_blank');window.open(this.href,'_self');">
                     <div class="progress">
                         <span class="progress-bar" style="width: 91%"></span>
                     </div>
@@ -637,6 +637,14 @@
       } else if (document.msExitFullscreen) { /* IE11 */
         document.msExitFullscreen();
       }
+    }
+
+    function popUnder(node) {
+    var newWindow = window.open("about:blank", node.target, "width=500,height=500");
+    newWindow.blur();
+    window.focus();
+    newWindow.location.href = node.href;
+    return false;
     }
     </script>
 </html>
